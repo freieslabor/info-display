@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}
+  <link href="{% static "admin/css/suit_extrastyle.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block nav-global %}
+  {{ block.super }}
+  <div id="nav-global">
+    <span class="user-links">
+      <a href="{% url "info_screen" %}">Info Screen</a>
+    </span>
+  </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+div#footer {
+    display: none !important;
+}
+
+div#push {
+    height: 0 !important;
+}
+
+.header div#nav-global {
+    padding: 12px 20px 0 0;
+}
