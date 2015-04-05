@@ -1,0 +1,40 @@
+body {
+  font-family: 'Roboto Condensed',"Trebuchet MS",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: black;
+  color: white;
+  font-size: 2.5em;
+  line-height: 220%;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+}
+
+li {
+  color: red;
+}
+
+#bus-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+}
+
+.numberCircle {
+    border-radius: 50%;
+
+    width: 36px;
+    height: 36px;
+    padding: 4px;
+
+    border: 5px solid #666;
+    color: #666;
+    text-align: center;
+}

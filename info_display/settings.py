@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     # screens
     'days_without_an_accident',
     'announcer',
+    'bus',
 )
 
 if DEBUG:
@@ -142,4 +143,5 @@ INFO_SCREEN_SCREENS = (
     'http://freieslabor.org/wiki/Freies_Labor',
     'https://stratum0.org/wiki/Hauptseite',
     'http://www.pengutronix.de/index_de.html',
+    '/bus/',
 )

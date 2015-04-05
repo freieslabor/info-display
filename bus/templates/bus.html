@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bus Schedule | Info Display</title>
+    <link rel="stylesheet" href="/static/css/bus.css" >
+  </head>
+  <body>
+    <h1>Nächste Busse</h1>
+	<div id="bus-container">
+      <ul id="bus-schedule"></ul>
+    </div>
+
+	<script src="/static/jquery-2.1.3.min.js"></script>
+	<script src="/static/date-de-DE.js"></script>
+    <script>
+    function showError(msg) {
+      $("#bus-schedule").append($("<li class=\"error\">" + msg + "</li>"));
+    }
+    $(function() {
+      $.ajax({
+        type: "GET",
+        url: "schedule.json",
+      }).done(function(data) {
+		if (data.length == 0) showError("Keine Verbindungen gefunden.");
+        $.each(data, function (index, bus) {
+          var bus_date = new Date(bus.date);
+		  var tomorrow = new Date.today().add(1).day();
+          var date_str = bus_date.toString("HH:mm");
+		  if (bus_date.getDayName() == tomorrow.getDayName()) {
+            date_str = "morgen, " + date_str;
+		  }
+          var newLi = $("<li>" + date_str + " <span class=\"numberCircle\">" +
+            bus.line + "</span> " + bus.direction + " (" + bus.transport_type +
+			")</li>");
+          $("#bus-schedule").append(newLi);
+        });
+      }).fail(function() {
+        showError("Fehler beim Lades des Busplans");
+      });
+    });
+    </script>
+  </body>
+</html>
