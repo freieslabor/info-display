@@ -1,3 +1,8 @@
+@font-face {
+    font-family: LetsGoDigital;
+    src: url(/static/LetsGoDigital-Regular.ttf);
+}
+
 html,
 body {
     margin: 0;
@@ -21,3 +26,35 @@ iframe.screen.active {
 ::-webkit-scrollbar { display: none }
 ::-webkit-scrollbar-track { display: none }
 ::-webkit-scrollbar-thumb { display: none }
+
+
+/* Footer -------------------------------------------------------------- */
+footer {
+    font-family: LetsGoDigital;
+    font-size: 36px;
+    background-color: black;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer #left,
+footer #right {
+    padding: 5px;
+}
+
+footer #left { float: left }
+footer #right { float: right }
+
+footer #left .widget {
+    float: left;
+    margin-right: 1em
+}
+
+footer #left .widget:last-child { margin-right: 0 }
+
+footer #clock { color: #FF0000 }
+footer #room-state { color: white }
+footer #room-state.open { color: #00FF00 }
+footer #room-state.close { color: #FF0000 }

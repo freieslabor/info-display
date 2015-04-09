@@ -1,3 +1,8 @@
+function get_info() {
+    var screens = $('iframe.screen');
+    return new Array($(screens).length, $(screens).index($('iframe.screen.active')));
+}
+
 function show_next_screen() {
     var screens = $('iframe.screen');
     var active_screen = $(screens).index($('iframe.screen.active'));
