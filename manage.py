@@ -5,7 +5,7 @@ import sys
 MSG = """
 You are not running in a virtualenv!
 Do you know what you are doing?
-Tyre uppercase 'yes': """
+Type uppercase 'yes': """
 
 if not os.environ.get('VIRTUAL_ENV'):
     while True:
