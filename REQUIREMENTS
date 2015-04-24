@@ -1,6 +1,0 @@
-django==1.7
-pytz
-lxml
-python-dateutil
-django-suit-ckeditor
-django-suit

@@ -1,4 +1,20 @@
-= App Callbacks
- * pull (hol dir daten und sag dann bescheid)
- * focus (wenn sie angezeigt wird)
- * blur (wenn die app den focus verliert)
+# Getting Started
+
+## Debian
+
+> # apt-get install python-dev python-pip
+
+## virtualenv
+
+> $ pip install --user --upgrade virtualenv
+> $ virtualenv env
+> $ source env/bin/activate
+> $ pip install -r REQUIREMENTS.txt
+
+### Check if virtualenv is active
+
+> $ printenv | grep VIRTUAL_ENV
+
+### Deactivate virtualenv
+
+> $ deactivate
