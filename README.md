@@ -2,7 +2,7 @@
 
 ## Debian
 
-> # apt-get install python-dev python-pip
+> \# apt-get install python-dev python-pip
 
 ## virtualenv
 
