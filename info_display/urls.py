@@ -2,7 +2,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
 
-admin.site.index_template = 'admin/home.html'
 
 urlpatterns = patterns(
     '',

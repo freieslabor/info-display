@@ -1,4 +1,4 @@
-{% load static %}
+{% load static settings %}
 <html>
   <head>
     <title>Info Display</title>
@@ -6,7 +6,9 @@
   </head>
   <body>
     <main>
-      {% include "info_screen/load_screens.html" %}
+      {% for screen in 'INFO_SCREEN_SCREENS'|settings %}
+        <iframe class="screen{% if forloop.first %} active{% endif %}" src="{{ screen }}"></iframe>
+      {% endfor %}
     </main>
     <footer>
       <div id="left">

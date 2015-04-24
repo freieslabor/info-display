@@ -1,5 +1,0 @@
-{% load settings %}
-
-{% for screen in 'INFO_SCREEN_SCREENS'|settings %}
-  <iframe class="screen{% if forloop.first %} active{% endif %}" src="{{ screen }}"></iframe>
-{% endfor %}
