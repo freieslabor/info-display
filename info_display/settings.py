@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'days_without_an_accident',
     'announcer',
     'bus',
+    'event_schedule',
 )
 
 if DEBUG:

@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from bus.models import BusSchedule
 from bus.fields import TRANSPORT_TYPES
 from django.conf import settings
+from bus.settings import STATIONS
 
 from lxml import etree
 from datetime import datetime
@@ -10,15 +11,11 @@ from dateutil.tz import tzlocal
 
 
 class Command(BaseCommand):
-    args = '<station_id station_id ...>'
     help = 'Updates bus schedule and cleans departed buses.'
 
     def handle(self, *args, **options):
-        if len(args) == 0:
-            raise CommandError('No station id\'s given.')
-
         # insert new buses
-        for station_id in args:
+        for station_name, station_id in STATIONS.items():
             parser = etree.XMLParser(ns_clean=True)
             # xml parsing and xpath magic
             url = 'http://mobil.efa.de/mobile3/XSLT_DM_REQUEST'
@@ -58,8 +55,8 @@ class Command(BaseCommand):
                                        transport_type=transport_id)
                 schedule.save()
 
-            self.stdout.write('Successfully updated schedule for station %s.'
-                              % station_id)
+            self.stdout.write('Successfully updated schedule for %s (%s).'
+                              % (station_name, station_id))
 
         # clear departed buses
         BusSchedule.objects.filter(date__lt=datetime.now(tzlocal())).delete()
