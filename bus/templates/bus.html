@@ -17,7 +17,7 @@
 	<script src="/static/date-de-DE.js"></script>
     <script>
     function showError(msg) {
-      $("#bus-schedule").append($("<li class=\"error\">" + msg + "</li>"));
+		$("#bus-schedule").append($("<li>").addClass("error").text(msg));
     }
     $(function() {
       $.ajax({
@@ -26,15 +26,19 @@
       }).done(function(data) {
 		if (data.length == 0) showError("Keine Verbindungen gefunden.");
         $.each(data, function (index, bus) {
+		  // generate date string
           var bus_date = new Date(bus.date);
 		  var tomorrow = new Date.today().add(1).day();
           var date_str = bus_date.toString("HH:mm");
 		  if (bus_date.getDayName() == tomorrow.getDayName()) {
             date_str = "morgen, " + date_str;
 		  }
-          var newLi = $("<li>" + date_str + " <span class=\"numberCircle\">" +
-            bus.line + "</span> " + bus.direction + " (" + bus.transport_type +
-			")</li>");
+
+		  // append new schedule line
+		  var newLi = $("<li>");
+		  newLi.append(date_str);
+		  newLi.append($("<span>").append(bus.line).addClass("numberCircle"));
+		  newLi.append(bus.direction + " (" + bus.transport_type + ")");
           $("#bus-schedule").append(newLi);
         });
       }).fail(function() {
