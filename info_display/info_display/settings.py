@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     # screens
     # 'days_without_an_accident',
     # 'announcer',
-    # 'bus',
+    'bus',
 )
 
 if DEBUG:
