@@ -47,3 +47,28 @@ var screen_cycle_interval = setInterval(function() {
     show_next_screen();
     update_screen_state();
 }, 5000);
+
+$(document).keydown(function(event) {
+    switch(event.which) {
+        case 37: // left
+            show_previous_screen();
+            update_screen_state();
+            break;
+
+        case 38: // up
+            break;
+
+        case 39: // right
+            show_next_screen();
+            update_screen_state();
+            break;
+
+        case 40: // down
+            break;
+
+        default:
+            return;
+    }
+
+    event.preventDefault();
+});
