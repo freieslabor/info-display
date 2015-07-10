@@ -3,5 +3,5 @@
 set -x
 
 rm db.sqlite3 &> /dev/null
-./manage.py syncdb --noinput
+./manage.py migrate
 ./manage.py loaddata login_data.json
