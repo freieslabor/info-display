@@ -31,8 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-    # base application
-    'info_screen',
+    'info_display',
 
     # django suit
     'suit',
