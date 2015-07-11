@@ -2,11 +2,12 @@ body {
   font-family: 'Roboto Condensed',"Trebuchet MS",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
   background-color: black;
   color: white;
-  font-size: 24pt;
+  font-size: 3.5vw;
   line-height: 220%;
 }
 
 h1 {
+  font-size: 6vw;
   text-align: center;
   margin-top: 5px;
   margin-bottom: 0px;
