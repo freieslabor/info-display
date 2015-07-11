@@ -140,6 +140,11 @@ SUIT_CONFIG = {
             'icon': 'icon-lock',
             'models': ('user', 'group'),
         },
+        {
+            'label': 'Main Screen',
+            'icon': 'icon-th-large',
+            'url': '/main-screen/',
+        },
         '-',
         # {
             # 'app': 'announcer',
