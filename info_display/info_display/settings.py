@@ -141,11 +141,11 @@ SUIT_CONFIG = {
             'models': ('user', 'group'),
         },
         '-',
-        {
-            'app': 'announcer',
-            'label': 'Announcer',
-            'icon': 'icon-info-sign',
-        },
+        # {
+            # 'app': 'announcer',
+            # 'label': 'Announcer',
+            # 'icon': 'icon-info-sign',
+        # },
         {
             'app': 'days_without_an_accident',
             'label': 'Days Without An Accident',
@@ -156,9 +156,6 @@ SUIT_CONFIG = {
 
 # info display
 INFO_SCREEN_SCREENS = (
-    'http://freieslabor.org/blog/',
-    'http://freieslabor.org/wiki/Freies_Labor',
-    'https://stratum0.org/wiki/Hauptseite',
-    'http://www.pengutronix.de/index_de.html',
-    '/bus/',
+    '/screens/days_without_an_accident/',
+    '/screens/bus/',
 )
