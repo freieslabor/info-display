@@ -6,7 +6,24 @@ class Accident(models.Model):
     reporter = models.ForeignKey(
         User,
         related_name='+',
-        verbose_name='Reporter'
+        verbose_name='Reporter',
+        editable=False,
+        null=True,
+        blank=True
+    )
+
+    time = models.DateTimeField(
+        verbose_name='Time'
+    )
+
+    casualties = models.IntegerField(
+        verbose_name='Casualties',
+        default=1
+    )
+
+    title = models.CharField(
+        verbose_name='Title',
+        max_length=55
     )
 
     description = models.TextField(
@@ -15,6 +32,8 @@ class Accident(models.Model):
         blank=True
     )
 
-    created = models.DateTimeField(
-        verbose_name='Created'
-    )
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['time']

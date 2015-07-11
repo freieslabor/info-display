@@ -46,7 +46,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # screens
-    # 'days_without_an_accident',
+    'days_without_an_accident',
     # 'announcer',
     'bus',
 )

@@ -3,4 +3,7 @@ from suit_ckeditor.widgets import CKEditorWidget
 
 
 class AccidentForm(forms.ModelForm):
-    description = forms.CharField(widget=CKEditorWidget())
+    description = forms.CharField(
+        required=False,
+        widget=CKEditorWidget()
+    )
