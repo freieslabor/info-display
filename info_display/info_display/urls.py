@@ -3,6 +3,10 @@ from django.contrib import admin
 
 screen_urlpatterns = [
     url(r'^bus/', include('bus.urls', namespace='bus', app_name='bus')),
+    url(r'^days_without_an_accident/',
+        include('days_without_an_accident.urls',
+                namespace='days_without_an_accident',
+                app_name='days_without_an_accident')),
 ]
 
 urlpatterns = [

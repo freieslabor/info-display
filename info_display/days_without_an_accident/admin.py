@@ -4,6 +4,9 @@ from .forms import AccidentForm
 
 
 class AccidentAdmin(admin.ModelAdmin):
+    actions_on_top = True
+    actions_on_bottom = False
+
     form = AccidentForm
 
     list_display = (
