@@ -57,24 +57,36 @@ update_screen_state();
 
 
 // screen cycling
-// var screen_cycle_interval = setInterval(function() {
-    // show_next_screen();
-    // update_screen_state();
-// }, 5000);
+var screen_cycle_timeout;
+
+function setup_screen_cycle() {
+    screen_cycle_timeout = setTimeout(function() {
+        show_next_screen();
+        update_screen_state();
+        setup_screen_cycle();
+    }, 5000);
+}
+
+setup_screen_cycle();
+
 
 $(document).keydown(function(event) {
     switch(event.which) {
         case 37: // left
+            clearTimeout(screen_cycle_timeout);
             show_previous_screen();
             update_screen_state();
+            setup_screen_cycle();
             break;
 
         case 38: // up
             break;
 
         case 39: // right
+            clearTimeout(screen_cycle_timeout);
             show_next_screen();
             update_screen_state();
+            setup_screen_cycle();
             break;
 
         case 40: // down
