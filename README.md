@@ -2,7 +2,7 @@
 
 ## Debian
 
-    # apt-get install python-dev python-pip libxml2-dev libxslt1-dev
+    # apt-get install python3-dev python3-pip libxml2-dev libxslt1-dev
 
 ## virtualenv
 
