@@ -1,5 +1,5 @@
 """
-Django settings for bus schedule app.
+Django settings for public transport schedule app.
 """
 
 

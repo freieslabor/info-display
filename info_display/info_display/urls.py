@@ -2,7 +2,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 screen_urlpatterns = [
-    url(r'^bus/', include('bus.urls', namespace='bus', app_name='bus')),
+    url(r'^public_transport_schedule/',
+        include('public_transport_schedule.urls',
+                namespace='public_transport_schedule',
+                app_name='public_transport_schedule')),
     url(r'^days_without_an_accident/',
         include('days_without_an_accident.urls',
                 namespace='days_without_an_accident',

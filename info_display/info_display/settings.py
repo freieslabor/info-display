@@ -48,7 +48,7 @@ INSTALLED_APPS = (
     # screens
     'days_without_an_accident',
     # 'announcer',
-    'bus',
+    'public_transport_schedule',
 )
 
 if DEBUG:
@@ -162,5 +162,5 @@ SUIT_CONFIG = {
 # info display
 INFO_SCREEN_SCREENS = (
     '/screens/days_without_an_accident/',
-    '/screens/bus/',
+    '/screens/public_transport_schedule/',
 )

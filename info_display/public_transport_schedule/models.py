@@ -1,11 +1,11 @@
 from django.db import models
-from bus.fields import TRANSPORT_TYPES
+from public_transport_schedule.fields import TRANSPORT_TYPES
 from django.conf import settings
 
 from pytz import timezone
 
 
-class BusSchedule(models.Model):
+class PTSchedule(models.Model):
     date = models.DateTimeField('date of departure')
     station_id = models.IntegerField()
     line = models.CharField(max_length=20)

@@ -2,14 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bus Schedule | Info Display</title>
-    <link rel="stylesheet" href="/static/css/bus.css" >
+    <title>Public Transport Schedule | Info Display</title>
+    <link rel="stylesheet" href="/static/css/pts.css" >
   </head>
   <body>
-    <h1>Nächste Busse</h1>
+    <h1>Nächste Verbindungen</h1>
 	<div id="outer-container">
 	  <div id="inner-container">
-        <ul id="bus-schedule"></ul>
+        <ul id="public-transport-schedule"></ul>
       </div>
 	</div>
 
@@ -17,7 +17,7 @@
 	<script src="/static/date-de-DE.js"></script>
     <script>
     function showError(msg) {
-		$("#bus-schedule").append($("<li>").addClass("error").text(msg));
+		$("#public-transport-schedule").append($("<li>").addClass("error").text(msg));
     }
     $(function() {
       $.ajax({
@@ -25,24 +25,25 @@
         url: "schedule.json",
       }).done(function(data) {
 		if (data.length == 0) showError("Keine Verbindungen gefunden.");
-        $.each(data, function (index, bus) {
+        $.each(data, function (index, connection) {
 		  // generate date string
-          var bus_date = new Date(bus.date);
+          var connection_date = new Date(connection.date);
 		  var tomorrow = new Date.today().add(1).day();
-          var date_str = bus_date.toString("HH:mm");
-		  if (bus_date.getDayName() == tomorrow.getDayName()) {
+          var date_str = connection_date.toString("HH:mm");
+		  if (connection_date.getDayName() == tomorrow.getDayName()) {
             date_str = "morgen, " + date_str;
 		  }
 
 		  // append new schedule line
 		  var newLi = $("<li>");
 		  newLi.append(date_str);
-		  newLi.append($("<span>").append(bus.line).addClass("numberCircle"));
-		  newLi.append(bus.direction + " (" + bus.transport_type + ")");
-          $("#bus-schedule").append(newLi);
+		  newLi.append($("<span>").append(" " + connection.line + " ")
+			.addClass("numberCircle"));
+		  newLi.append(connection.direction + " (" + connection.transport_type + ")");
+          $("#public-transport-schedule").append(newLi);
         });
       }).fail(function() {
-        showError("Fehler beim Laden des Busplans");
+        showError("Fehler beim Laden des Plans");
       });
     });
     </script>

@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
-from bus.models import BusSchedule
-from bus.fields import TRANSPORT_TYPES
+from public_transport_schedule .models import PTSchedule
+from public_transport_schedule.fields import TRANSPORT_TYPES
 from django.conf import settings
-from bus.settings import STATIONS
+from public_transport_schedule.settings import STATIONS
 
 from lxml import etree
 from datetime import datetime
@@ -11,10 +11,10 @@ from dateutil.tz import tzlocal
 
 
 class Command(BaseCommand):
-    help = 'Updates bus schedule and cleans departed buses.'
+    help = 'Updates public transport schedule and cleans past connections.'
 
     def handle(self, *args, **options):
-        # insert new buses
+        # insert new connections
         for station_name, station_id in STATIONS.items():
             parser = etree.XMLParser(ns_clean=True)
             # xml parsing and xpath magic
@@ -49,8 +49,8 @@ class Command(BaseCommand):
                 transport_to_id = {v: k for k, v in TRANSPORT_TYPES}
                 transport_id = transport_to_id[transport]
 
-                # create bus schedule object and save it
-                schedule = BusSchedule(date=date_time, station_id=station_id,
+                # create public transport schedule object and save it
+                schedule = PTSchedule(date=date_time, station_id=station_id,
                                        line=number, direction=direction,
                                        transport_type=transport_id)
                 schedule.save()
@@ -58,5 +58,5 @@ class Command(BaseCommand):
             self.stdout.write('Successfully updated schedule for %s (%s).'
                               % (station_name, station_id))
 
-        # clear departed buses
-        BusSchedule.objects.filter(date__lt=datetime.now(tzlocal())).delete()
+        # clear past connections
+        PTSchedule.objects.filter(date__lt=datetime.now(tzlocal())).delete()
