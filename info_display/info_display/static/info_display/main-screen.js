@@ -1,3 +1,17 @@
+// resizing
+function resize_main() {
+    $('main').css('height', ($(window).height() - $('footer').height()))
+}
+
+$(document).ready(function() {
+    resize_main();
+});
+
+$(window).resize(function() {
+    resize_main();
+});
+
+
 // clock
 function update_clock() {
     var date_obj = new Date();
@@ -43,10 +57,10 @@ update_screen_state();
 
 
 // screen cycling
-var screen_cycle_interval = setInterval(function() {
-    show_next_screen();
-    update_screen_state();
-}, 5000);
+// var screen_cycle_interval = setInterval(function() {
+    // show_next_screen();
+    // update_screen_state();
+// }, 5000);
 
 $(document).keydown(function(event) {
     switch(event.which) {
