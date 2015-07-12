@@ -163,4 +163,7 @@ SUIT_CONFIG = {
 INFO_SCREEN_SCREENS = (
     '/screens/days_without_an_accident/',
     '/screens/public_transport_schedule/',
+
+    #thttp://andreas-seier.eu/bahn/a.html
+    'https://iris.noncd.db.de/wbt/js/index.html?typ=ab&bhf=8000169&bhfname=&zugtyp=&platform=&zeilen=10&paging=1&pagingdauer=10&via=0&impressum=0&style=&lang=de&SecLang=en',
 )
