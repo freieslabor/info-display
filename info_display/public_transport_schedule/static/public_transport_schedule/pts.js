@@ -3,7 +3,11 @@ function showError(msg) {
 		.text(msg));
 }
 
-$(function() {
+$(document).ready(function() {
+	refresh();
+});
+
+function refresh() {
 	$.ajax({
 		type: "GET",
 		url: "schedule.json",
@@ -13,8 +17,9 @@ $(function() {
 			return;
 		}
 
-		$("#title").append(
-			document.createTextNode(" von \"" + data[0].station_name + "\""));
+		$("#title").html("Verbindungen von \"" + data[0].station_name + "\"");
+
+		$('#public-transport-schedule').empty();
 
 		$.each(data, function (index, connection) {
 			// generate date string
@@ -39,4 +44,4 @@ $(function() {
 	}).fail(function() {
 		showError("Fehler beim Laden des Plans");
 	});
-});
+}
