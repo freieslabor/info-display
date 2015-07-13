@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="/static/css/pts.css" >
   </head>
   <body>
-    <h1>Nächste Verbindungen</h1>
+    <h1 id="title">Verbindungen</h1>
 	<div id="outer-container">
 	  <div id="inner-container">
         <ul id="public-transport-schedule"></ul>
@@ -17,13 +17,16 @@
 	<script src="/static/date-de-DE.js"></script>
     <script>
     function showError(msg) {
-		$("#public-transport-schedule").append($("<li>").addClass("error").text(msg));
+		$("#public-transport-schedule").append($("<li>").addClass("error")
+			.text(msg));
     }
     $(function() {
       $.ajax({
         type: "GET",
         url: "schedule.json",
       }).done(function(data) {
+		$("#title").append(
+			document.createTextNode(" von \"" + data[0].station_name + "\""));
 		if (data.length == 0) showError("Keine Verbindungen gefunden.");
         $.each(data, function (index, connection) {
 		  // generate date string
@@ -39,7 +42,8 @@
 		  newLi.append(date_str);
 		  newLi.append($("<span>").append(" " + connection.line + " ")
 			.addClass("numberCircle"));
-		  newLi.append(connection.direction + " (" + connection.transport_type + ")");
+		  newLi.append(connection.direction + " ("
+			+ connection.transport_type + ")");
           $("#public-transport-schedule").append(newLi);
         });
       }).fail(function() {

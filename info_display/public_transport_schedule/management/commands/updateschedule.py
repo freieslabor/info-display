@@ -1,8 +1,8 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from public_transport_schedule .models import PTSchedule
 from public_transport_schedule.fields import TRANSPORT_TYPES
 from django.conf import settings
-from public_transport_schedule.settings import STATIONS
+from public_transport_schedule.models import Station
 
 from lxml import etree
 from datetime import datetime
@@ -15,12 +15,12 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         # insert new connections
-        for station_name, station_id in STATIONS.items():
+        for station in Station.objects.all():
             parser = etree.XMLParser(ns_clean=True)
             # xml parsing and xpath magic
             url = 'http://mobil.efa.de/mobile3/XSLT_DM_REQUEST'
             args = '?outputFormat=xml&mode=direct&name_dm=' \
-                + '%s&limit=30&type_dm=stopID' % station_id
+                + '%s&limit=30&type_dm=stopID' % station.dm_id
 
             tree = etree.parse(url + args, parser)
             departures = tree.xpath('/itdRequest/itdDepartureMonitor' +
@@ -50,13 +50,16 @@ class Command(BaseCommand):
                 transport_id = transport_to_id[transport]
 
                 # create public transport schedule object and save it
-                schedule = PTSchedule(date=date_time, station_id=station_id,
-                                       line=number, direction=direction,
-                                       transport_type=transport_id)
+                schedule = PTSchedule(
+                    date=date_time,
+                    station=station,
+                    line=number, direction=direction,
+                    transport_type=transport_id
+                )
                 schedule.save()
 
             self.stdout.write('Successfully updated schedule for %s (%s).'
-                              % (station_name, station_id))
+                              % (station.name, station.dm_id))
 
         # clear past connections
         PTSchedule.objects.filter(date__lt=datetime.now(tzlocal())).delete()

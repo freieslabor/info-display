@@ -156,14 +156,20 @@ SUIT_CONFIG = {
             'label': 'Days Without An Accident',
             'icon': 'icon-fire',
         },
+        {
+            'app': 'public_transport_schedule',
+            'label': 'Public Transport Schedule',
+            'icon': 'icon-road',
+        },
+
     ),
 }
 
 # info display
 INFO_SCREEN_SCREENS = (
     '/screens/days_without_an_accident/',
-    '/screens/public_transport_schedule/',
+    '/screens/public_transport_schedule/25721026/',
 
-    #thttp://andreas-seier.eu/bahn/a.html
+    #http://andreas-seier.eu/bahn/a.html
     'https://iris.noncd.db.de/wbt/js/index.html?typ=ab&bhf=8000169&bhfname=&zugtyp=&platform=&zeilen=10&paging=1&pagingdauer=10&via=0&impressum=0&style=&lang=de&SecLang=en',
 )
