@@ -1,0 +1,11 @@
+[
+{
+  "fields": {
+    "name": "Nordstadt",
+    "dm_id": 25721026
+  },
+  "model": "public_transport_schedule.station",
+  "pk": 1
+}
+]
+
