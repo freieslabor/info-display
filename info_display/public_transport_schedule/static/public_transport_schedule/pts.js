@@ -12,14 +12,13 @@ function refresh() {
 		type: "GET",
 		url: "schedule.json",
 	}).done(function(data) {
+		$('#public-transport-schedule').empty();
 		if (data.length == 0) {
 			showError("Keine Verbindungen gefunden.");
 			return;
 		}
 
 		$("#title").html("Verbindungen von \"" + data[0].station_name + "\"");
-
-		$('#public-transport-schedule').empty();
 
 		$.each(data, function (index, connection) {
 			// generate date string
