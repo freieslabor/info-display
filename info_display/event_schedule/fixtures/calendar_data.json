@@ -1,0 +1,10 @@
+[
+{
+  "fields": {
+    "url": "http://freieslabor.org/api/events_utc.ical"
+  },
+  "model": "event_schedule.calendarfeed",
+  "pk": 1
+}
+]
+

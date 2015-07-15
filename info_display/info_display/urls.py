@@ -10,6 +10,11 @@ screen_urlpatterns = [
         include('days_without_an_accident.urls',
                 namespace='days_without_an_accident',
                 app_name='days_without_an_accident')),
+    url(r'^event_schedule/',
+        include('event_schedule.urls',
+                namespace='event_schedule',
+                app_name='event_schedule')),
+
 ]
 
 urlpatterns = [

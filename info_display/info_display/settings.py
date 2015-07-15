@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'days_without_an_accident',
     # 'announcer',
     'public_transport_schedule',
+    'event_schedule',
 )
 
 if DEBUG:
@@ -161,7 +162,11 @@ SUIT_CONFIG = {
             'label': 'Public Transport Schedule',
             'icon': 'icon-road',
         },
-
+        {
+            'app': 'event_schedule',
+            'label': 'Event Schedule',
+            'icon': 'icon-calendar',
+        },
     ),
 }
 
@@ -169,6 +174,7 @@ SUIT_CONFIG = {
 INFO_SCREEN_SCREENS = (
     '/screens/days_without_an_accident/',
     '/screens/public_transport_schedule/25721026/',
+    '/screens/event_schedule/',
 
     #http://andreas-seier.eu/bahn/a.html
     'https://iris.noncd.db.de/wbt/js/index.html?typ=ab&bhf=8000169&bhfname=&zugtyp=&platform=&zeilen=10&paging=1&pagingdauer=10&via=0&impressum=0&style=&lang=de&SecLang=en',

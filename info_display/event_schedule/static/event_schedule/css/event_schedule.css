@@ -1,0 +1,46 @@
+body {
+  font-family: 'Roboto Condensed',"Trebuchet MS",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: black;
+  color: white;
+  font-size: 3.5vw;
+  line-height: 220%;
+}
+
+h1 {
+  font-size: 4.3vw;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+#outer-container {
+  display: table;
+  margin: auto;
+}
+
+#inner-container {
+  display: table-cell;
+  vertical-align: center;
+  margin: auto;
+}
+
+#event-schedule {
+  margin-top: 0px;
+}
+
+ul li:before {
+    color: #FFFF00;
+    content: '» ';
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li {
+  color: white;
+}
