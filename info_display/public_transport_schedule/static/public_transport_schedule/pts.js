@@ -1,46 +1,46 @@
 function showError(msg) {
-	$("#public-transport-schedule").append($("<li>").addClass("error")
-		.text(msg));
+    $("#public-transport-schedule").append($("<li>").addClass("error")
+        .text(msg));
 }
 
 $(document).ready(function() {
-	refresh();
+    refresh();
 });
 
 function refresh() {
-	$.ajax({
-		type: "GET",
-		url: "schedule.json",
-	}).done(function(data) {
-		$('#public-transport-schedule').empty();
-		if (data.length == 0) {
-			showError("Keine Verbindungen gefunden.");
-			return;
-		}
+    $.ajax({
+        type: "GET",
+        url: "schedule.json",
+    }).done(function(data) {
+        $('#public-transport-schedule').empty();
+        if (data.length == 0) {
+            showError("Keine Verbindungen gefunden.");
+            return;
+        }
 
-		$("#title").html("Verbindungen von \"" + data[0].station_name + "\"");
+        $("#title").html("Verbindungen von \"" + data[0].station_name + "\"");
 
-		$.each(data, function (index, connection) {
-			// generate date string
-			var connection_date = new Date(connection.date);
-			var tomorrow = new Date.today().add(1).day();
-			var date_str = connection_date.toString("HH:mm");
+        $.each(data, function (index, connection) {
+            // generate date string
+            var connection_date = new Date(connection.date);
+            var tomorrow = new Date.today().add(1).day();
+            var date_str = connection_date.toString("HH:mm");
 
-			if (connection_date.getDayName() == tomorrow.getDayName()) {
-				date_str = "morgen, " + date_str;
-			}
+            if (connection_date.getDayName() == tomorrow.getDayName()) {
+                date_str = "morgen, " + date_str;
+            }
 
-			// append new schedule line
-			var newLi = $("<li>");
-			newLi.append(date_str);
-			newLi.append($("<span>").append(" " + connection.line + " ")
-				.addClass("numberCircle"));
-			newLi.append(connection.direction + " ("
-				+ connection.transport_type + ")");
+            // append new schedule line
+            var newLi = $("<li>");
+            newLi.append(date_str);
+            newLi.append($("<span>").append(" " + connection.line + " ")
+                .addClass("numberCircle"));
+            newLi.append(connection.direction + " ("
+                + connection.transport_type + ")");
 
- 			$("#public-transport-schedule").append(newLi);
-		});
-	}).fail(function() {
-		showError("Fehler beim Laden des Plans");
-	});
+             $("#public-transport-schedule").append(newLi);
+        });
+    }).fail(function() {
+        showError("Fehler beim Laden des Plans");
+    });
 }
