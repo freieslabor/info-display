@@ -14,6 +14,10 @@ screen_urlpatterns = [
         include('event_schedule.urls',
                 namespace='event_schedule',
                 app_name='event_schedule')),
+    url(r'^webcam/',
+        include('webcam.urls',
+                namespace='webcam',
+                app_name='webcam')),
 
 ]
 

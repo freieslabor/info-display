@@ -1,0 +1,36 @@
+body {
+  font-family: 'Roboto Condensed',"Trebuchet MS",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: black;
+}
+#container {
+  width:100%;
+}
+#picture-container {
+  z-index: 1;
+  height: 100vh;
+  max-height: 100%;
+  max-width: 100%;
+margin: auto;
+position: relative;
+text-align:center;
+}
+#date {
+  color: white;
+  font-size: 2vw;
+  z-index: 2;
+  position: absolute;
+  text-shadow: 1px 1px black;
+margin: auto;
+text-align: center;
+width: 100%;
+bottom: 10px;
+}
+.webcam-img {
+  position: absolute;
+margin:auto;
+   text-align: left;
+    display: inline-block;
+  max-width: 99%;
+  max-height: 99%;
+transform: translate(-50%);
+}
