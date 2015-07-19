@@ -23,7 +23,7 @@ function refresh() {
             var event_date = new Date(event.date);
             var date_str = event_date.toString("dd.MM. HH:mm");
 
-            if (event_date.getDayName() == new Date.today().getDayName()) {
+			if (event_date.compareTo(new Date.today()) == 0) {
                 date_str = "heute, " + event_date.toString("HH:mm");
             }
 
