@@ -57,7 +57,7 @@ update_screen_state();
 
 
 // screen cycling
-var screen_cycle_timeout;
+var screen_cycle_timeout = 0;
 
 function setup_screen_cycle() {
     screen_cycle_timeout = setTimeout(function() {
@@ -79,9 +79,6 @@ $(document).keydown(function(event) {
             setup_screen_cycle();
             break;
 
-        case 38: // up
-            break;
-
         case 39: // right
             clearTimeout(screen_cycle_timeout);
             show_next_screen();
@@ -89,7 +86,14 @@ $(document).keydown(function(event) {
             setup_screen_cycle();
             break;
 
-        case 40: // down
+        case 32: // space
+            if(screen_cycle_timeout == 0) {
+                setup_screen_cycle();
+            } else {
+                clearTimeout(screen_cycle_timeout);
+                screen_cycle_timeout = 0;
+            }
+
             break;
 
         default:
