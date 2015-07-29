@@ -18,6 +18,10 @@ screen_urlpatterns = [
         include('webcam.urls',
                 namespace='webcam',
                 app_name='webcam')),
+    url(r'^space_statistics/',
+        include('space_statistics.urls',
+                namespace='space_stats',
+                app_name='space_stats')),
 
 ]
 

@@ -1,0 +1,61 @@
+body {
+  font-family: 'Roboto Condensed',"Trebuchet MS",Tahoma,Geneva,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: black;
+  color: white;
+  font-size: 3.5vw;
+}
+
+h1 {
+  font-size: 4.3vw;
+  text-align: center;
+  margin-top: 0.8vw;
+  margin-bottom: 2.7vw;
+}
+
+h2 {
+  font-size: 2.0vw;
+  text-align: center;
+  margin-top: 0.5vw;
+  margin-bottom: 0vw;
+}
+
+.error {
+  margin-top: 2.5vw;
+  text-align: center;
+  font-size: 1.5vw;
+  color: red;
+}
+
+.label {
+  float: left;
+  display: block;
+  writing-mode:tb-rl;
+  -webkit-transform:rotate(-90deg);
+  -moz-transform:rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform:rotate(-90deg);
+  transform: rotate(-90deg);
+  font-size: 1vw;
+  position: relative;
+  top: 25%;
+  font-weight: bold;
+}
+
+#dow {
+  margin: auto;
+  width: 75vw;
+  height: 17vw;
+}
+
+#hour {
+  margin: auto;
+  width: 75vw;
+  height: 17vw;
+}
+
+.diagram {
+  padding: 0;
+  display: block;
+  width: 70vw;
+  height: 15vw;
+}

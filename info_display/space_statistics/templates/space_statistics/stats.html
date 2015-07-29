@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Raumstatistiken | Info Display</title>
+    <link rel="stylesheet" href="{% static 'space_statistics/css/stats.css' %}" >
+  </head>
+  <body>
+    <h1 id="title">Raumstatistiken</h1>
+
+    <h2>pro Wochentag</h2>
+    <div id="dow"><p class="label">% offen</p><canvas class="diagram" id="diagram-dow"></canvas></div>
+
+    <h2>pro Stunde</h2>
+    <div id="hour"><p class="label">% offen</p><canvas class="diagram" id="diagram-hour"></canvas></div>
+
+    <script src="{% static 'jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'date-de-DE.js' %}"></script>
+    <script src="{% static 'Chart.min.js' %}"></script>
+    <script src="{% static 'space_statistics/stats.js' %}"></script>
+  </body>
+</html>

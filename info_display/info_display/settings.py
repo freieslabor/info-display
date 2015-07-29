@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'public_transport_schedule',
     'event_schedule',
     'webcam',
+    'space_statistics',
 )
 
 if DEBUG:
@@ -177,6 +178,7 @@ INFO_SCREEN_SCREENS = (
     '/screens/public_transport_schedule/25721026/',
     '/screens/event_schedule/',
     '/screens/webcam/',
+    '/screens/space_statistics/',
 
     #http://andreas-seier.eu/bahn/a.html
     'https://iris.noncd.db.de/wbt/js/index.html?typ=ab&bhf=8000169&bhfname=&zugtyp=&platform=&zeilen=10&paging=1&pagingdauer=10&via=0&impressum=0&style=&lang=de&SecLang=en',
