@@ -38,6 +38,7 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+    line-height: normal;
 }
 
 footer #left,
@@ -58,4 +59,4 @@ footer #left .widget:last-child { margin-right: 0 }
 footer #clock { color: #FF0000 }
 footer #room-state { color: white }
 footer #room-state.open { color: #00FF00 }
-footer #room-state.close { color: #FF0000 }
+footer #room-state.closed { color: #FF0000 }
