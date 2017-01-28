@@ -1,9 +1,10 @@
-from django.shortcuts import HttpResponse
-from public_transport_schedule.models import PTSchedule
-
-from datetime import datetime
 from dateutil.tz import tzlocal
+from datetime import datetime
 import json
+
+from django.shortcuts import HttpResponse
+
+from .models import PTSchedule
 
 
 def schedule_json(request, id):

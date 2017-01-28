@@ -46,10 +46,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # screens
-    'days_without_an_accident',
-    # 'announcer',
-    'public_transport_schedule',
-    'event_schedule',
+    'info_display.screens.days_without_an_accident',
+    'info_display.screens.public_transport_schedule',
+    'info_display.screens.event_schedule',
 )
 
 if DEBUG:
@@ -153,17 +152,17 @@ SUIT_CONFIG = {
             # 'icon': 'icon-info-sign',
         # },
         {
-            'app': 'days_without_an_accident',
+            'app': 'info_display.screens.days_without_an_accident',
             'label': 'Days Without An Accident',
             'icon': 'icon-fire',
         },
         {
-            'app': 'public_transport_schedule',
+            'app': 'info_display.screens.public_transport_schedule',
             'label': 'Public Transport Schedule',
             'icon': 'icon-road',
         },
         {
-            'app': 'event_schedule',
+            'app': 'info_display.screens.event_schedule',
             'label': 'Event Schedule',
             'icon': 'icon-calendar',
         },

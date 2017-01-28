@@ -3,15 +3,15 @@ from django.contrib import admin
 
 screen_urlpatterns = [
     url(r'^public_transport_schedule/(?P<id>\w+)/',
-        include('public_transport_schedule.urls',
+        include('info_display.screens.public_transport_schedule.urls',
                 namespace='public_transport_schedule',
                 app_name='public_transport_schedule')),
     url(r'^days_without_an_accident/',
-        include('days_without_an_accident.urls',
+        include('info_display.screens.days_without_an_accident.urls',
                 namespace='days_without_an_accident',
                 app_name='days_without_an_accident')),
     url(r'^event_schedule/',
-        include('event_schedule.urls',
+        include('info_display.screens.event_schedule.urls',
                 namespace='event_schedule',
                 app_name='event_schedule')),
 

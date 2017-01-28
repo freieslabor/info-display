@@ -1,8 +1,9 @@
+from pytz import timezone
+
 from django.db import models
-from public_transport_schedule.fields import TRANSPORT_TYPES
 from django.conf import settings
 
-from pytz import timezone
+from .fields import TRANSPORT_TYPES
 
 
 class PTSchedule(models.Model):

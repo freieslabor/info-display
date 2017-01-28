@@ -1,13 +1,13 @@
-from django.core.management.base import BaseCommand
-from public_transport_schedule .models import PTSchedule
-from public_transport_schedule.fields import TRANSPORT_TYPES
-from django.conf import settings
-from public_transport_schedule.models import Station
-
-from lxml import etree
+from dateutil.tz import tzlocal
 from datetime import datetime
 from pytz import timezone
-from dateutil.tz import tzlocal
+from lxml import etree
+
+from django.core.management.base import BaseCommand
+from django.conf import settings
+
+from ...models import PTSchedule, Station
+from ...fields import TRANSPORT_TYPES
 
 
 class Command(BaseCommand):

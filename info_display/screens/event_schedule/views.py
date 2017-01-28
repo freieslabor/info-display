@@ -1,9 +1,10 @@
-from django.shortcuts import HttpResponse
-from event_schedule.models import Event
-
-from datetime import datetime
 from dateutil.tz import tzlocal
+from datetime import datetime
 import json
+
+from django.shortcuts import HttpResponse
+
+from .models import Event
 
 
 def schedule_json(request):

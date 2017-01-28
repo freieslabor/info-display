@@ -1,5 +1,4 @@
 from django.core.management.base import BaseCommand
-from event_schedule.models import Event, CalendarFeed
 from django.conf import settings
 
 from datetime import datetime
@@ -8,6 +7,8 @@ from dateutil.tz import tzlocal
 
 from icalendar import Calendar
 import urllib.request
+
+from ...models import Event, CalendarFeed
 
 
 class Command(BaseCommand):
