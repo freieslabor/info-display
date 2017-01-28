@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import logging
 import os
+
+settings_logger = logging.getLogger('info-display.settings')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,6 +27,8 @@ SECRET_KEY = 'ntd)j#j$9ulu!!l16bi7ukq--2c^n$ujlfi1@2sde0m!e&_3=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('INFO_DISPLAY_DEBUG', False)
+
+settings_logger.debug('DEBUG={}'.format(bool(DEBUG)))
 
 ALLOWED_HOSTS = ['*']
 
@@ -130,6 +135,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.environ.get('INFO_DISPLAY_STATIC_ROOT', 'data/static')
+
+settings_logger.debug('STATIC_ROOT={}'.format(STATIC_ROOT))
 
 # Django Suit
 SUIT_CONFIG = {

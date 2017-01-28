@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from info_display.wsgi import application as django_app
-from django.conf import settings as django_settings
 from aiohttp.web import Application, run_app
 from aiohttp_wsgi import WSGIHandler
 import argparse
 import asyncio
+import logging
+import os
 
 # parse commandline
 arg_parser = argparse.ArgumentParser()
@@ -14,7 +14,33 @@ arg_parser.add_argument('--host', type=str, default='0.0.0.0')
 arg_parser.add_argument('--port', type=int, default=8080)
 args = arg_parser.parse_args()
 
+# setup logging
+LOG_LEVEL = {
+    'debug': logging.DEBUG,
+    'info': logging.INFO,
+    'warn': logging.WARN,
+    'error': logging.ERROR,
+    'fatal': logging.FATAL,
+}[os.environ.get('INFO_DISPLAY_LOG_LEVEL', 'INFO').lower()]
+
+logging.basicConfig(level=LOG_LEVEL)
+
+logger = logging.getLogger('info-display')
+access_logger = logging.getLogger('info-display.access')
+
+if LOG_LEVEL == logging.DEBUG:
+    try:
+        import coloredlogs
+
+        coloredlogs.install(level=LOG_LEVEL)
+
+    except ImportError:
+        pass
+
 # setup server
+from info_display.wsgi import application as django_app  # NOQA
+from django.conf import settings as django_settings  # NOQA
+
 loop = asyncio.get_event_loop()
 app = Application(loop=loop)
 wsgi_handler = WSGIHandler(django_app)
@@ -23,4 +49,5 @@ app.router.add_static(django_settings.STATIC_URL, django_settings.STATIC_ROOT)
 app.router.add_route('*', '/{path_info:.*}', wsgi_handler.handle_request)
 
 # run server
-run_app(app, host=args.host, port=args.port)
+run_app(app, host=args.host, port=args.port, access_log=access_logger,
+        print=logger.info)  # NOQA
