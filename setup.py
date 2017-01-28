@@ -13,6 +13,7 @@ setup(
     packages=find_packages(),
     scripts=[
         'bin/info-display-cli',
+        'bin/info-display',
     ],
     install_requires=[
         'Django>=1.8,<1.9',
@@ -22,5 +23,7 @@ setup(
         'lxml==3.4.3',
         'python-dateutil==2.4.2',
         'icalendar==3.9.0',
+        'aiohttp==1.2.0',
+        'aiohttp-wsgi==0.6.3',
     ],
 )
