@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ntd)j#j$9ulu!!l16bi7ukq--2c^n$ujlfi1@2sde0m!e&_3=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('INFO_DISPLAY_DEBUG', False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -97,12 +97,16 @@ WSGI_APPLICATION = 'info_display.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
+DATABASE_NAME = os.environ.get('INFO_DISPLAY_DB', 'data/db.sqlite3')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'data/db.sqlite3'),
+        'NAME': DATABASE_NAME,
     }
 }
+
+settings_logger.debug('DATABASE={}'.format(DATABASE_NAME))
 
 
 # Internationalization
@@ -125,7 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'data/static'
+STATIC_ROOT = os.environ.get('INFO_DISPLAY_STATIC_ROOT', 'data/static')
 
 # Django Suit
 SUIT_CONFIG = {
