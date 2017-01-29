@@ -7,9 +7,9 @@
 ## virtualenv
 
     $ pip install --user --upgrade virtualenv
-    $ virtualenv -p python3 env
+    $ virtualenv -p python3.5 env
     $ source env/bin/activate
-    $ pip install -r REQUIREMENTS.txt
+    (env) $ ./setup.py install
 
 ### Check if virtualenv is active
 
@@ -18,3 +18,15 @@
 ### Deactivate virtualenv
 
     $ deactivate
+    
+## Run
+
+    (env) $ info-display collectstatic
+    (env) $ info-display
+
+## Configuration
+
+    INFO_DISPLAY_DEBUG=0
+    INFO_DISPLAY_LOG_LEVEL=INFO  # {DEBUG,INFO,WARN,ERROR,FATAL}
+    INFO_DISPLAY_DB=data/db.sqlite3
+    (env) $ info-display
