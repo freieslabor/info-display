@@ -164,17 +164,17 @@ SUIT_CONFIG = {
             # 'icon': 'icon-info-sign',
         # },
         {
-            'app': 'info_display.screens.days_without_an_accident',
+            'app': 'days_without_an_accident',
             'label': 'Days Without An Accident',
             'icon': 'icon-fire',
         },
         {
-            'app': 'info_display.screens.public_transport_schedule',
+            'app': 'public_transport_schedule',
             'label': 'Public Transport Schedule',
             'icon': 'icon-road',
         },
         {
-            'app': 'info_display.screens.event_schedule',
+            'app': 'event_schedule',
             'label': 'Event Schedule',
             'icon': 'icon-calendar',
         },
