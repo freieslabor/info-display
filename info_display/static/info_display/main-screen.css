@@ -17,7 +17,9 @@ iframe.screen {
     display: none;
     border: 0;
     width: 100%;
-    height: 100%;
+    /* subtract footer (36px font size + 2*5px padding) */
+    height: calc(100% - 46px);
+    position: absolute;
 }
 
 iframe.screen.active {
