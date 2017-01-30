@@ -1,0 +1,126 @@
+#outer-container {
+  display: table;
+  margin: auto;
+}
+
+#inner-container {
+  display: table-cell;
+  vertical-align: center;
+  margin: auto;
+}
+
+ul {
+  margin-top: 20px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+li {
+  color: white;
+}
+
+input {
+  width: 100%;
+  background: #495C70;
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed black;
+  outline: none;
+  margin-bottom: 7px;
+  font-size: 2.2em;
+}
+
+#results {
+  line-height: 120%;
+  font-size: 30px;
+}
+
+#results > li {
+  margin-bottom: 5px;
+}
+
+.selected {
+  border-radius: 10px !important;
+}
+
+#partkeepr-detail {
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .5);
+  width: 48%;
+  height: 78%;
+  margin: auto;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 10px;
+  position: relative;
+  background-color: white;
+  top: 15%;
+  display: none;
+}
+
+#detail {
+  font-size: 0.6em;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  display: none;
+  background-color: white;
+  padding: 10px;
+  position: absolute;
+  z-index: 2;
+}
+
+#search-container {
+  position: absolute;
+  background-color: white;
+  width: 95%;
+  z-nndex: 1;
+}
+
+.floating {
+  float: left;
+}
+
+#detailtable {
+  width: auto;
+  margin: 20px;
+  margin-left: 250px;
+}
+
+#photo {
+  height: 200px;
+  width: 200px;
+  margin-left: 20px;
+}
+
+#category {
+  font-size: 1.6em;
+}
+
+#result-container {
+  overflow: auto;
+  height: 400px;
+  overflow-x: hidden;
+}
+
+.ui-dialog-title {
+  font-size: 0.6em;
+}
+
+.grundriss-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.grundriss {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.grundriss-marker {
+  position: absolute;
+}

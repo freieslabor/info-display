@@ -1,24 +1,20 @@
-{% load static settings %}
-<html>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Info Display</title>
-    <link rel="stylesheet" href="{% static "info_display/main-screen.css" %}">
+    <meta charset="utf-8">
+    <title>Partkeepr Search | Info Display</title>
 	<link rel="stylesheet" media="all" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
     <link rel="stylesheet" href="{% static 'partkeepr_search/css/partkeepr_search.css' %}" />
     <link rel="stylesheet" href="{% static 'partkeepr_search/css/jquery.keynav.css' %}" />
     <link rel="stylesheet" href="{% static 'partkeepr_search/css/avgrund.css' %}" />
   </head>
   <body>
-    <main>
-      {% for screen in 'INFO_SCREEN_SCREENS'|settings %}
-        <iframe class="screen{% if forloop.first %} active{% endif %}" src="{{ screen }}"></iframe>
-      {% endfor %}
-
     <div id="partkeepr-detail">
       <div id="detail">
         <div><span id="category"></span></div>
-        <div>
-        <img id="photo" src="" class="floating"/>
+        <img id="photo" src="" width="200" class="floating"/>
+        <span>
           <table class="table" id="detailtable">
             <tr>
               <th>Name</th>
@@ -32,16 +28,8 @@
               <th>Status/Zustand</th>
               <td id="status"></td>
             </tr>
-            <tr>
-              <th>Ort</th>
-              <td id="location"></td>
-            </tr>
           </table>
-        </div>
-        <div style="margin-top: 65px;border-top: 1px dashed black;">
-          <div id="location-map1" style="margin-left: 15px" class="floating"></div>
-          <div id="location-map2" style="margin-left: 360px"></div>
-        </div>
+        </span>
       </div>
       <div id="search-container">
         <input id="search-input" type="text" />
@@ -50,26 +38,10 @@
 	    </div>
 	  </div>
 	</div>
-    </main>
-    <footer>
-      <div id="left">
-        <div class="widget">
-          Raumstatus: <span id="room-state"></span>
-        </div>
-        <div class="widget">
-          <span id="screen-state"></span>
-        </div>
-      </div>
-      <div id="right">
-        <span id="clock"></span>
-      </div>
-    </footer>
+
     <script src="{% static 'jquery-2.1.3.min.js' %}"></script>
-    <script src="{% static 'info_display/info-display-api.js' %}"></script>
-    <script src="{% static 'info_display/main-screen.js' %}"></script>
     <script src="{% static 'partkeepr_search/jquery.keynav.js' %}"></script>
     <script src="{% static 'partkeepr_search/jquery.avgrund.js' %}"></script>
-    <script src="{% static 'partkeepr_search/inventory_location.js' %}"></script>
     <script src="{% static 'partkeepr_search/partkeepr_search.js' %}"></script>
     <script src="{% static 'partkeepr_search/searchbox.js' %}"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

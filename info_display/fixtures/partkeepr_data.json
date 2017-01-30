@@ -1,0 +1,12 @@
+[
+{
+  "fields": {
+    "api_url": "https://demo.partkeepr.org/api",
+    "user": "admin",
+    "password": "admin"
+  },
+  "model": "info_display.partkeeprinstance",
+  "pk": 1
+}
+]
+
