@@ -15,6 +15,10 @@ class PTSchedule(models.Model):
 
     id_to_transport = dict(TRANSPORT_TYPES)
 
+    class Meta:
+        unique_together = (("date", "station", "line", "direction",
+                            "transport_type"),)
+
     def __str__(self):
         return 'date: %s, station: %d, line: %s, direction: %s, type: %s' \
             % (self.date, self.station_id, self.line, self.direction,

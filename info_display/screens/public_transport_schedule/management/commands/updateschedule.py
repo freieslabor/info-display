@@ -5,6 +5,7 @@ from lxml import etree
 
 from django.core.management.base import BaseCommand
 from django.conf import settings
+from django.db import IntegrityError
 
 from ...models import PTSchedule, Station
 from ...fields import TRANSPORT_TYPES
@@ -49,14 +50,18 @@ class Command(BaseCommand):
                 transport_to_id = {v: k for k, v in TRANSPORT_TYPES}
                 transport_id = transport_to_id[transport]
 
-                # create public transport schedule object and save it
-                schedule = PTSchedule(
-                    date=date_time,
-                    station=station,
-                    line=number, direction=direction,
-                    transport_type=transport_id
-                )
-                schedule.save()
+                try:
+                    # create public transport schedule object and save it
+                    schedule = PTSchedule(
+                        date=date_time,
+                        station=station,
+                        line=number, direction=direction,
+                        transport_type=transport_id
+                    )
+                    schedule.save()
+                except IntegrityError:
+                    # ignore duplicates
+                    pass
 
             self.stdout.write('Successfully updated schedule for %s (%s).'
                               % (station.name, station.dm_id))
