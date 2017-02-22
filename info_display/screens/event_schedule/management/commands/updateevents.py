@@ -26,6 +26,7 @@ class Command(BaseCommand):
 
                     # create public transport schedule object and save it
                     schedule = Event(
+                        id=event['UID'],
                         date=date_time,
                         title=event['SUMMARY']
                     )

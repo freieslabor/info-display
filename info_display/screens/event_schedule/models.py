@@ -5,6 +5,7 @@ from pytz import timezone
 
 
 class Event(models.Model):
+    id = models.CharField(max_length=100, primary_key=True)
     date = models.DateTimeField('date of departure')
     title = models.CharField(max_length=20)
 
