@@ -26,7 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ntd)j#j$9ulu!!l16bi7ukq--2c^n$ujlfi1@2sde0m!e&_3=2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('INFO_DISPLAY_DEBUG', False)
+DEBUG = bool(os.environ.get('INFO_DISPLAY_DEBUG', False))
+
+if DEBUG:
+    settings_logger.warning('running in debug mode')
 
 settings_logger.debug('DEBUG={}'.format(bool(DEBUG)))
 
@@ -134,9 +137,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.environ.get('INFO_DISPLAY_STATIC_ROOT', 'data/static')
 
-settings_logger.debug('STATIC_ROOT={}'.format(STATIC_ROOT))
+if not DEBUG:
+    STATIC_ROOT = os.environ.get('INFO_DISPLAY_STATIC_ROOT', 'data/static')
+
+    settings_logger.debug('STATIC_ROOT={}'.format(STATIC_ROOT))
 
 # Django Suit
 SUIT_CONFIG = {

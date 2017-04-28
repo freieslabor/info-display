@@ -45,9 +45,15 @@ loop = asyncio.get_event_loop()
 app = Application(loop=loop)
 wsgi_handler = WSGIHandler(django_app)
 
-app.router.add_static(django_settings.STATIC_URL, django_settings.STATIC_ROOT)
-app.router.add_route('*', '/{path_info:.*}', wsgi_handler.handle_request)
+# setup static route
+DEBUG = bool(os.environ.get('INFO_DISPLAY_DEBUG', False))
+
+if not DEBUG:
+    app.router.add_static(django_settings.STATIC_URL,
+                          django_settings.STATIC_ROOT)
 
 # run server
+app.router.add_route('*', '/{path_info:.*}', wsgi_handler.handle_request)
+
 run_app(app, host=args.host, port=args.port, access_log=access_logger,
         print=logger.info)  # NOQA
