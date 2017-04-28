@@ -23,7 +23,46 @@
         <span id="clock"></span>
       </div>
     </footer>
+    <div id="ractive"></div>
+
+    {% verbatim %}
+      <script class="ractive-partial" id="popup" type="text/ractive">
+        {{#if mode != 'normal'}}
+          <div id="popup">
+            {{#if mode == 'help'}}
+              {{>help}}
+            {{elseif mode == 'inventar'}}
+              {{>inventar}}
+            {{/if}}
+          </div>
+        {{/if}}
+      </script>
+
+      <script class="ractive-partial" id="help" type="text/ractive">
+        <h1>Help</h1>
+        <ul>
+          <li><b>ESC:</b> Quit</li>
+          <li><b>i:</b> Inventar</li>
+        </ul>
+      </script>
+
+      <script class="ractive-partial" id="inventar" type="text/ractive">
+        <h1>Inventar</h1>
+        <input id="inventar-query" value="{{inventar.query}}" />
+        <ul class="selection">
+          {{#inventar_results}}
+            {{#if inventar.selected_item == @index}}
+              <li class="selected">{{.}}</li>
+            {{else}}
+              <li>{{.}}</li>
+            {{/if}}
+          {{/inventar_results}}
+        </ul>
+      </script>
+    {% endverbatim %}
+
     <script src="{% static 'jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'ractive.js' %}"></script>
     <script src="{% static 'info_display/info-display-api.js' %}"></script>
     <script src="{% static 'info_display/main-screen.js' %}"></script>
   </body>
