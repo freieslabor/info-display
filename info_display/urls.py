@@ -1,4 +1,5 @@
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic.base import TemplateView
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
@@ -23,6 +24,10 @@ urlpatterns = [
     url(r'^screens/', include(screen_urlpatterns)),
     url(r'^main-screen/$', 'info_display.views.main_screen',
         name='main_screen'),
+    url(r'^partkeepr_search/search.json$', 'info_display.views.search_json',
+        name='search_results'),
+    url(r'^partkeepr_search/img/(?P<img_id>\S+)?$', 'info_display.views.proxy_image',
+        name='proxy_image'),
     url(r'', include(admin.site.urls)),
 ]
 

@@ -25,5 +25,6 @@ setup(
         'icalendar==3.9.0',
         'aiohttp==1.2.0',
         'aiohttp-wsgi==0.6.3',
+        'requests',
     ],
 )
