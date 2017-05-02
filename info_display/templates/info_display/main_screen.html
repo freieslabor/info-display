@@ -49,15 +49,16 @@
       <script class="ractive-partial" id="inventar" type="text/ractive">
         <h1>Inventar</h1>
         <input id="inventar-query" value="{{inventar.query}}" />
-        <ul class="selection">
-          {{#inventar_results}}
+        <select multiple class="selection">
+          {{#inventar.results}}
             {{#if inventar.selected_item == @index}}
-              <li class="selected">{{.}}</li>
+              <option selected=1>{{.name}}</option>
             {{else}}
-              <li>{{.}}</li>
+              <option>{{.name}}</option>
             {{/if}}
-          {{/inventar_results}}
-        </ul>
+            {{@index}}, {{inventar.selected_item}}
+          {{/inventar.results}}
+        </select>
       </script>
     {% endverbatim %}
 

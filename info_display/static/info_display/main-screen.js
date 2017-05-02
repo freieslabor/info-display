@@ -144,7 +144,7 @@ $(document).keydown(function(event) {
         case 38: // up
             // inventar result scrolling
             if(ractive.get('mode') == 'inventar') {
-                var result_length = ractive.get('inventar_results').length;
+                var result_length = ractive.get('inventar.results').length;
                 var selected_item = ractive.get('inventar.selected_item');
 
                 selected_item--;
@@ -163,7 +163,7 @@ $(document).keydown(function(event) {
         case 40: // down
             // inventar result scrolling
             if(ractive.get('mode') == 'inventar') {
-                var result_length = ractive.get('inventar_results').length;
+                var result_length = ractive.get('inventar.results').length;
                 var selected_item = ractive.get('inventar.selected_item');
 
                 selected_item++;
@@ -188,7 +188,7 @@ $(document).keydown(function(event) {
 
             } else if(mode == 'inventar') {
                 ractive.set('inventar.query',
-                            ractive.get('inventar_results')[ractive.get('inventar.selected_item')]);
+                            ractive.get('inventar.results')[ractive.get('inventar.selected_item')].name);
 
             }
 
@@ -216,21 +216,29 @@ var ractive = new Ractive({
         mode: 'normal',
         inventar: {
             query: '',
+            results: [],
             selected_item: 0
         }
-    },
-    computed: {
-        inventar_results: function() {
-            var results = [];
-            var q = ractive.get('inventar.query');
-
-            for(var i=0; i<q.length; i++) {
-                results.push(q.repeat(i + 1));
-            }
-
-            ractive.set('inventar.selected_item', 0);
-
-            return results;
-        }
     }
+});
+
+var keyboard_timeout = 0;
+
+ractive.observe('inventar.query', function (value) {
+    clearTimeout(keyboard_timeout);
+
+    if(!value) {
+        return;
+    }
+
+    keyboard_timeout = setTimeout(function() {
+        $.ajax({
+            dataType: 'json',
+            url: '/partkeepr_search/search.json?q=' + value,
+            success: function(data) {
+                ractive.set('inventar.results', data);
+                ractive.set('inventar.selected_item', 0);
+            }
+        });
+    }, 200);
 });
