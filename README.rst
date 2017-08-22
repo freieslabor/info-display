@@ -9,6 +9,7 @@ Setup
 
 ::
 
+    # apt install python3.5 python3.5-venv
     $ make
 
 
@@ -25,4 +26,5 @@ Browser
 
 ::
 
+    # apt install python3-pyqt5.qtwebkit
     $ make browser
