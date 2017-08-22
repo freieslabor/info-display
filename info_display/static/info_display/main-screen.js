@@ -1,6 +1,6 @@
 // resizing
 function resize_main() {
-    $('main').css('height', ($(window).height() - $('footer').height()))
+    $('main').css('height', ($(window).height() - $('footer').height()));
 }
 
 $(document).ready(function() {
