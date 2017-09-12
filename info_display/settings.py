@@ -195,3 +195,5 @@ INFO_SCREEN_SCREENS = (
     #http://andreas-seier.eu/bahn/a.html
     'https://iris.noncd.db.de/wbt/js/index.html?typ=ab&bhf=8000169&bhfname=&zugtyp=&platform=&zeilen=10&paging=1&pagingdauer=10&via=0&impressum=0&style=&lang=de&SecLang=en',
 )
+
+SPACE_API_URL = os.environ.get('INFO_DISPLAY_SPACE_API_URL', '')

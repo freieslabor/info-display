@@ -26,7 +26,7 @@ var clock_interval = setInterval(update_clock, 1000);
 
 // room_state
 function update_room_state() {
-    $.getJSON('https://freieslabor.org/api/room/', function(data) {
+    $.getJSON(space_api_url, function(data) {
         if(data.open != room_open) {
             $('span#room-state').removeClass('open closed');
 
@@ -38,6 +38,9 @@ function update_room_state() {
 
             room_open = data.open;
         }
+    }).error(function() {
+        $('span#room-state').removeClass('open closed');
+        $('span#room-state').addClass('closed').html('NA');
     });
 }
 

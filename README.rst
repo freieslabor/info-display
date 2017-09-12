@@ -28,3 +28,13 @@ Browser
 
     # apt install python3-pyqt5.qtwebkit
     $ make browser
+
+
+Setup Labor API
+---------------
+
+::
+
+    $ git clone https://github.com/freieslabor/labor-api
+    $ cd labor-api
+    $ make server
